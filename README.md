@@ -1,72 +1,61 @@
 # Noctalia Music Player Widget
 
-A fresh Noctalia v5 bar widget for controlling the visibility of a standalone music-player UI.
+A fresh Noctalia bar widget for the standalone music player.
 
-## Design
-
-The widget intentionally does **not** implement playback. It only sends a toggle command to the external music player.
+## Structure
 
 ```text
-Noctalia Bar
-     │
-     ▼
- Music Player Widget
-     │
-     │ toggle
-     ▼
-Music Player UI
-     │
-     └── playback remains independent
+dw-ms-player-widget/
+├── plugin.toml
+├── bar.luau
+└── README.md
 ```
 
-Therefore:
+The manifest follows the current Noctalia plugin format (`plugin_api = 24`) used by current community plugins.
 
-```text
-show  != play
-hide  != pause
-close != stop
-```
-
-## Install for development
-
-Clone this repository somewhere convenient and add it as a Noctalia plugin source:
+## Install from Git
 
 ```bash
-noctalia msg plugins source add dev path /path/to/dw-ms-player-widget
+noctalia msg plugins source add music-player git https://github.com/dikawardani24/dw-ms-player-widget.git
+```
+
+Then refresh/list plugins:
+
+```bash
+noctalia msg plugins list
+```
+
+Enable:
+
+```bash
 noctalia msg plugins enable dikawardani24/music-player
 ```
 
-Then add the widget to your bar as:
-
-```toml
-end = ["plugin:dikawardani24/music-player:music-player"]
-```
-
-## Player command
-
-The default command is:
+Add this widget to the Noctalia bar:
 
 ```text
-dw-ms-player-widget toggle
+plugin:dikawardani24/music-player:bar
 ```
 
-Change it in Noctalia widget settings if the installed player exposes a different command.
+## Player integration
 
-The command must implement a true UI toggle:
-
-```text
-hidden → visible
-visible → hidden
-```
-
-It must not pause, stop, restart, or recreate the audio player.
-
-## IPC
-
-The widget also accepts:
+The widget intentionally does not implement playback. Clicking the widget executes:
 
 ```bash
-noctalia msg plugin dikawardani24/music-player:music-player focused toggle
+noctalia-music-playerctl toggle
 ```
 
-which performs the same toggle operation.
+That command must be provided by the music-player application and must only toggle the player window:
+
+```text
+hidden  -> visible
+visible -> hidden
+```
+
+It must never pause, stop, restart, or recreate playback.
+
+This keeps window visibility independent from playback state.
+
+## Development
+
+The existing Noctalia Media Player and Spotify Media widgets were used only as API/architecture references. The widget implementation itself is fresh and intentionally minimal.
