@@ -1,22 +1,12 @@
 id = "dikawardani24/music-player"
 name = "DW Music Player"
 version = "0.2.0"
-plugin_api = 13
+plugin_api = 24
 author = "Dika Wardani"
 license = "MIT"
 icon = "music"
 description = "Native Noctalia music player bar widget with popup controls, playlist, and fixed-height visualizer. Playback continues while the player is hidden."
 tags = ["music", "audio", "bar", "widget", "popup", "niri", "wayland"]
-
-[[panel]]
-id = "dikawardani24/music-player:popup"
-entry = "popup.luau"
-width = 340
-height = 520
-placement = "floating"
-position = "center"
-keyboard_focus = "on_demand"
-capture_keys = ["Tab", "Backtab", "Shift+Tab", "Up", "Down", "Left", "Right", "Return", "Enter", "Space", "Escape"]
 
 [[widget]]
 id = "bar"
