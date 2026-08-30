@@ -1,0 +1,28 @@
+id = "dikawardani24/music-player"
+name = "Music Player"
+version = "0.1.0"
+plugin_api = 17
+author = "Dika Wardani"
+license = "MIT"
+dependencies = []
+tags = ["Bar", "Music", "Niri"]
+icon = "music"
+description = "A minimal Noctalia bar widget for toggling the standalone Music Player UI."
+
+[[widget]]
+id = "music-player"
+entry = "music_player.luau"
+
+  [[widget.setting]]
+  key = "glyph"
+  type = "glyph"
+  label_key = "settings.glyph.label"
+  description_key = "settings.glyph.description"
+  default = "music"
+
+  [[widget.setting]]
+  key = "command"
+  type = "string"
+  label_key = "settings.command.label"
+  description_key = "settings.command.description"
+  default = "dw-ms-player-widget toggle"
