@@ -1,13 +1,19 @@
 id = "dikawardani24/music-player"
-name = "Music Player"
-version = "0.1.0"
+name = "DW Music Player"
+version = "0.2.0"
 plugin_api = 24
 author = "Dika Wardani"
 license = "MIT"
-dependencies = []
-tags = ["bar", "music", "niri"]
+
+dependencies = [
+  "noctalia-music-player",
+]
+
 icon = "music"
-description = "A minimal Noctalia bar widget for toggling the standalone Music Player UI."
+
+description = "Native Noctalia music player bar widget with popup controls, playlist, and fixed-height visualizer. Playback continues while the player is hidden."
+
+tags = ["music", "audio", "bar", "widget"]
 
 [[widget]]
 id = "bar"
