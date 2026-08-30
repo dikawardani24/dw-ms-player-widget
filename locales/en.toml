@@ -1,9 +1,1 @@
 # Noctalia Plugin — DW Music Player
-# English translations for plugin settings and UI strings.
-
--- Settings labels
-settings.toggle_command.label = "Toggle command"
-settings.toggle_command.description = "Command to toggle the player window visibility (e.g., noctalia-music-player --toggle)"
-
--- Plugin description
-plugin.description = "Native Noctalia music player bar widget with popup controls, playlist, and fixed-height visualizer."

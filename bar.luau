@@ -35,10 +35,6 @@ function onClick()
   local ok = pcall(function()
     noctalia.runAsync("noctalia-music-player --toggle")
   end)
-  if not ok then
-    -- Fallback: try sending to the Unix socket directly
-    -- This ensures the command gets through even if the binary path is wrong
-  end
   -- Also toggle the Noctalia popup panel
   noctalia.togglePanel("dikawardani24/music-player:popup")
   -- Re-read visibility after toggle

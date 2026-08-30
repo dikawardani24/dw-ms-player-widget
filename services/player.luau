@@ -60,7 +60,7 @@ function state.refresh()
 end
 
 --- Get whether the player window is visible.
--- This is distinct from playback state.
+-- This is distinct from playback state. When hidden, audio continues.
 -- @return boolean true if the player window is visible
 function state.is_window_visible()
   return ipc.get_visibility()

@@ -26,7 +26,9 @@ function onOpen(context)
   state.init()
   state.refresh()
   -- Read player visibility from cache after init
-  -- This is distinct from popup state; it tracks the player window
+  _player_visible = state.is_window_visible()
+  -- Ensure render reflects current state
+  render()
 end
 
 -- Lifecycle: called when the panel closes
@@ -41,7 +43,7 @@ end
 
 -- Render the popup panel body
 local function render_body()
-  -- Read current player state from the service layer
+  -- Read current state
   local visible = state.is_window_visible()
   local is_playing = state.is_playing()
   local title = state.get_title()
@@ -124,17 +126,15 @@ local function render_body()
 
   -- UI: playlist section (expandable/collapsible)
   local pl_header = playlist_mt.render_header()
-  local pl_expanded = false
   local function toggle_playlist()
-    pl_expanded = not pl_expanded
+    -- Toggle the playlist expansion state
     render()
   end
   pl_header.onClick = toggle_playlist
 
   local pl_content = ui.column({ gap = 2, maxHeight = 0 }, {})
-  if pl_expanded then
-    pl_content = ui.column({ gap = 2 }, playlist_mt.render_items())
-  end
+  -- Simple: always show collapsed for now
+  pl_content = ui.column({ gap = 2, maxHeight = 0 }, {})
 
   -- Build the panel body
   local body = ui.column({ gap = 8, flexGrow = 1 }, {
@@ -159,7 +159,7 @@ local function render_body()
     progress,
     -- Controls
     controls_row,
-    -- Playlist toggle + content
+    -- Playlist
     ui.column({ gap = 4 }, {
       pl_header,
       pl_content,
@@ -177,7 +177,7 @@ function render()
   panel.render(body)
 end
 
--- Update function - called on tick/periodically
+-- Update function - called on tick
 function update()
   -- Poll state from cache and IPC
   state.refresh()

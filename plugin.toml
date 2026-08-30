@@ -10,7 +10,7 @@ tags = ["music", "audio", "bar", "widget", "popup", "niri", "wayland"]
 
 [[widget]]
 id = "bar"
-entry = "entries/bar.luau"
+entry = "bar.luau"
 
 [[setting]]
 key = "toggle-command"
