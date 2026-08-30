@@ -5,10 +5,6 @@ plugin_api = 24
 author = "Dika Wardani"
 license = "MIT"
 
-dependencies = [
-  "noctalia-music-player",
-]
-
 icon = "music"
 
 description = "Native Noctalia music player bar widget with popup controls, playlist, and fixed-height visualizer. Playback continues while the player is hidden."
