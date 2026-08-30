@@ -4,17 +4,17 @@ version = "0.2.0"
 plugin_api = 24
 author = "Dika Wardani"
 license = "MIT"
+
+dependencies = [
+  "noctalia-music-player",
+]
+
 icon = "music"
+
 description = "Native Noctalia music player bar widget with popup controls, playlist, and fixed-height visualizer. Playback continues while the player is hidden."
-tags = ["music", "audio", "bar", "widget", "popup", "niri", "wayland"]
+
+tags = ["music", "audio", "bar", "widget"]
 
 [[widget]]
 id = "bar"
 entry = "bar.luau"
-
-[[setting]]
-key = "toggle-command"
-type = "string"
-label_key = "settings.toggle_command.label"
-description_key = "settings.toggle_command.description"
-default = "noctalia-music-player --toggle"
